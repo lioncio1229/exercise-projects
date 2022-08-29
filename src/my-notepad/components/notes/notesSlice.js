@@ -1,13 +1,13 @@
 export const initialState = {
   list: {
     0: {
-      id: '0',
+      _id: '0',
       title: "Hello World",
       content: "<div>This is the content of hello world</div>",
       isFresh: false,
     },
     1: {
-      id: '1',
+      _id: '1',
       title: "Hello World 2",
       content: "<div>This is the content of hello world 2</div>",
       isFresh: false,
@@ -19,14 +19,20 @@ export default function notesReducer(state, action) {
 
   switch (action.type) {
 
+    case "notes/fetch":
+      return {
+        ...state,
+        list : action.payload
+      };
+
     case "notes/add":
       const newNote = action.payload;
       return {
         list: {
           ...state.list,
-          [newNote.id]: {...newNote, isFresh : true},
+          [newNote._id]: newNote,
         },
-        currentId: newNote.id,
+        currentId: newNote._id,
       };
 
     case "notes/delete":
@@ -46,7 +52,7 @@ export default function notesReducer(state, action) {
         ...state,
         list: {
           ...state.list,
-          [note.id]: {...note, isFresh : false},
+          [note._id]: note,
         },
       };
 

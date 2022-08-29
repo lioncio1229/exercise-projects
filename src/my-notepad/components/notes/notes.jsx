@@ -1,5 +1,4 @@
 import Note from "./note";
-import useFetchNotes from "./hooks/useFetchNotes";
 import useCreateNote from "./hooks/useCreateNote";
 
 import { useState } from "react";
@@ -11,7 +10,6 @@ import useDeleteNote from "./hooks/useDeleteNote";
 import { faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
 export default function Notes() {
-  const notes = useFetchNotes();
   const createNote = useCreateNote();
 
   const { state, dispatch } = useStore();
@@ -19,6 +17,8 @@ export default function Notes() {
   const [saveCB, setSaveCB] = useState({ id: undefined, isOn: false });
   const [deleteCB, setDeleteCB] = useState({ id: undefined, isOn: false });
   const deleteNote = useDeleteNote();
+
+  const notes = state.notes.list;
 
   const isNoteDirty = (id) => {
     const {currentId} = state.notes;
@@ -103,7 +103,7 @@ export default function Notes() {
 
       <div className="notes flex-con fcol">
         <div className="list">
-          {Object.keys(notes).map((key) => (
+          {notes && Object.keys(notes).map((key) => (
             <Note
               key={key}
               id={key}

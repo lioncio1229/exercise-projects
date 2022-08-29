@@ -1,16 +1,20 @@
 import useStore from "../../../useStore";
-import uniqid from 'uniqid';
+import axios from 'axios';
+import { notes_url } from "../../../utils";
 
 export default function useCreateNote()
 {
     const {dispatch} = useStore();
     const newNote = {
-        id : uniqid(),
         title : 'New Note',
-        content : ''
+        content : '',
+        isFresh : true
     }
     const create = () => {
-        dispatch({type : 'notes/add', payload : newNote});
+        axios.post(notes_url, newNote).then(result => {
+            if(result.status === 200)
+                dispatch({type : 'notes/add', payload : result.data});
+        });
     }
     return create;
 }

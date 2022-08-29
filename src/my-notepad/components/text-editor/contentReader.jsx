@@ -41,7 +41,6 @@ export default function ContentReader() {
 
   const enableReader = () => {
     speak({ text: note.content, voice, rate : speed, pitch});
-    console.log(voices);
     startReading();
   };
 

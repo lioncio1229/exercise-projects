@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { stringToElement } from "../../../utils";
 import useCurrentNote from "../../notes/hooks/useCurrentNote";
+import useUpdateNote from "../../notes/hooks/useUpdateNote";
 
 export default function useContentEditor()
 {
     const {note, state, dispatch} = useCurrentNote();
+    const update = useUpdateNote();
 
     useEffect(() => {
         if(!note) return;
@@ -15,7 +17,8 @@ export default function useContentEditor()
 
     const saveContent = () => {
         const content = document.getElementById('paper').innerHTML;
-        dispatch({type : 'notes/update', payload : {...note, content}});
+        update({...note, content});
+        // dispatch({type : 'notes/update', payload : {...note, content}});
         dispatch({type : 'textEditor/dirty', payload : false});
     }
 

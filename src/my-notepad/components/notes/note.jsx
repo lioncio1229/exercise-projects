@@ -18,7 +18,7 @@ export default function Note({id, title='No Title', onNoteClick, onNoteDelete})
     const getClass = () => {
         return (
           "list-item flex-con selectable " +
-          (note?.id === id ? "active" : "inactive")
+          (note?._id === id ? "active" : "inactive")
         );
     }
 

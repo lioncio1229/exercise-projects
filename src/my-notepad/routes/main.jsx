@@ -5,7 +5,6 @@ import Notes from '../components/notes';
 import TextEditor from '../components/text-editor';
 
 export default function Main() {
-
   const {isWide, isLong, isFullscreen} = useStore().state.textEditor.display;
 
   return (

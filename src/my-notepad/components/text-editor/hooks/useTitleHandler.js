@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import useCurrentNote from "../../notes/hooks/useCurrentNote";
+import useUpdateNote from "../../notes/hooks/useUpdateNote";
 
 export default function useTitleHandler() {
     
   const { note, dispatch } = useCurrentNote();
+  const update = useUpdateNote();
   const [title, setTitle] = useState("");
   const [onFocus, setOnFocus] = useState(false);
 
@@ -18,10 +20,8 @@ export default function useTitleHandler() {
 
   const handleFocusOut = () => {
     setOnFocus(false);
-    dispatch({
-      type: "notes/update",
-      payload: { ...note, title },
-    });
+    if(note.title !== title || note.isFresh)
+      update({ ...note, title });
   };
 
   const handleTextChange = (event) => {
