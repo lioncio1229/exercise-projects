@@ -1,0 +1,320 @@
+:root
+{
+    --primary-color: #005b8f;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: #FBF9F9;
+    font-family: 'poppins';
+}
+
+/* #region Viewport */
+.viewport
+{
+    width: 90%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.viewport .content
+{
+    width: 200%;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    animation-duration: 0.5s;
+    transform: translateX(0.5%);
+    animation-fill-mode: forwards;
+}
+
+.viewport .to-main-animation
+{
+    animation-name: toMain;
+}
+
+.viewport .to-img-animation
+{
+    animation-name: toImg;
+}
+
+@keyframes toMain
+{
+    from{transform: translateX(-63%);}
+    to{transform: translateX(0.5%);}
+}
+
+@keyframes toImg
+{
+    from{transform: translateX(0.5%);}
+    to{transform: translateX(-63%);}
+}
+
+.viewport .main
+{
+    margin-top: 70px;
+}
+
+.viewport img
+{
+    margin-top: 20px;
+    width: 600px;
+}
+
+/* #endregion */
+
+/* #region Utilities */
+.flex-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-container-column
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.selection
+{
+    cursor: pointer;
+    user-select: none;
+}
+/* #endregion */
+
+/* #region Navigation Bar */
+
+    .navbar
+    {
+        padding: 0 20px;
+        background-color: white;
+        border-bottom: 1px solid lightgrey;
+        height: 60px;
+    }
+
+    .navbar h1
+    {
+        font-size: 25px;
+        color: var(--primary-color);
+    }
+
+    .nav-menu
+    {
+        height: 100%;
+        width: 480px;
+    }
+
+    .nav-buttons
+    {
+        height: 100%;
+    }
+
+    .nav-buttons div
+    {
+        width: 100px;
+        height: 100%;
+    }
+
+/* #endregion */
+
+/* #region Button */
+
+.btn
+{
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-r-s
+{
+    border-radius: 10px;
+}
+
+.btn-m
+{
+    width: 160px;
+    height: 38px;
+}
+
+.primary
+{
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.light
+{
+    background-color: white;
+    color: var(--primary-color);
+    transition: background-color 0.2s;
+}
+
+.primary-hover:hover
+{
+    background-color: #016dac;
+}
+
+.light-hover:hover
+{
+    background-color: rgb(243, 237, 237);
+}
+
+/* #endregion */
+
+/* #region Resistor */
+
+.resistor
+{
+    width: 100%;
+    height: 220px;
+}
+
+.resistor-wire
+{
+    width: 1200px;
+    height: 12px;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.resistor-body
+{
+    width: 800px;
+    height: 170px;
+    background-color: #FFCC74;
+    border-radius: 137px;
+    border: 1px solid grey;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.band
+{
+    background-color: black;
+    height: inherit;
+    width: 50px;
+    position: relative;
+}
+
+.band-info
+{
+    width: 100px;
+    height: auto;
+    color: var(--primary-color);
+    text-align: center;
+    position: absolute;
+    top: -75px;
+    left: -50%;
+}
+
+.band-info h2
+{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 2px 0;
+}
+
+/* #region BG Colors */
+
+.black{ background-color: black; color: white}
+.brown{ background-color: brown; color: white}
+.red{ background-color: red; color : black}
+.orange{ background-color: orange; color : black}
+.yellow{ background-color: yellow; color : black}
+.green{ background-color: green; color: white}
+.blue{ background-color: blue; color: white}
+.violet{ background-color: violet; color : black}
+.gray{ background-color: gray; color : white}
+.white{ background-color: white; color : black}
+.gold{ background-color: gold; color : black}
+.silver{ background-color: silver; color : black}
+.none{ background-color: rgb(97, 97, 97); color : white}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #region Output */
+.output
+{
+    width: 400px;
+    margin-bottom: 2px;
+}
+
+.output div
+{
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+}
+
+/* #endregion */
+
+/* #region ColorSelect */
+.color-select
+{
+    width: 150px;
+    position: absolute;
+    top: 20%;
+    left: -100%;
+    z-index: 14;
+}
+
+.color-item
+{
+    width: 100%;
+    padding: 1.2px;
+    padding-left: 40px;
+    font-weight: normal;
+    position: relative;
+}
+
+.caret-right
+{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    display: none;
+}
+/* #endregion */
+
+/* #region Footer */
+.footer
+{
+    height: 40px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.footer b
+{
+    margin-right: 7px;
+}
+
+/* #endregion */
