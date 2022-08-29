@@ -61,7 +61,6 @@ export default function notesReducer(state, action) {
         list: { ...state.list },
         currentId: action.payload,
       };
-
     default:
       return state;
   }

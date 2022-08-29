@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useCurrentNote from "../../notes/hooks/useCurrentNote";
 import useUpdateNote from "../../notes/hooks/useUpdateNote";
+import { today } from "../../../utils";
 
 export default function useTitleHandler() {
     
@@ -20,8 +21,15 @@ export default function useTitleHandler() {
 
   const handleFocusOut = () => {
     setOnFocus(false);
+
+    let newNote;
+    if(!note.isFresh)
+      newNote = { ...note, title};
+    else
+      newNote = {...note, title, dateCreated : today(), lastModified : today()}
+
     if(note.title !== title || note.isFresh)
-      update({ ...note, title });
+      update(newNote);
   };
 
   const handleTextChange = (event) => {

@@ -7,7 +7,8 @@ import ConfirmationBox from "../confirmation-box";
 import useContentEditor from "../text-editor/hooks/useContentEditor";
 import useDeleteNote from "./hooks/useDeleteNote";
 
-import { faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faSave, faSort } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Notes() {
   const createNote = useCreateNote();
@@ -103,21 +104,34 @@ export default function Notes() {
 
       <div className="notes flex-con fcol">
         <div className="list">
-          {notes && Object.keys(notes).map((key) => (
-            <Note
-              key={key}
-              id={key}
-              title={notes[key].title}
-              onNoteClick={handleNoteClick}
-              onNoteDelete={handleNoteDelete}
-            />
-          ))}
+          {
+            notes && Object.keys(notes).map((key) => {
+
+              const note = notes[key];
+              const info =
+                (note.dateCreated === note.lastModified
+                  ? "Date Created "
+                  : "Last Modified ") + note.lastModified;
+
+              return <Note
+                key={key}
+                id={key}
+                info={note.dateCreated ? info : '--'}
+                title={note.title}
+                onNoteClick={handleNoteClick}
+                onNoteDelete={handleNoteDelete}
+              />
+            })
+          }
         </div>
 
         <div className="foot-con flex-con-2">
-          <button onClick={handleAddNote} className="btn-l selectable">
-            Add Note
-          </button>
+          <div className="flex-con-2" style={{width : '90%'}}>
+            <button onClick={handleAddNote} className="btn-l selectable">
+              Add Note
+            </button>
+            <FontAwesomeIcon className="sort-button selectable" icon={faSort} />
+          </div>
         </div>
       </div>
     </>
