@@ -707,6 +707,30 @@ button:hover
 
 /* #region Info */
 
+.note-info
+{
+    position: relative;
+    color: var(--pallete4);
+}
 
+.info-menu
+{
+    position: absolute;
+    top: -140px;
+    left: -70%;
+    transform: translateX(-70%);
+    background-color: var(--pallete2);
+    box-shadow: 0 0 15px 2px var(--pallete5);
+    padding: 10px;
+    font-size: 14px;
+
+    width: 280px;
+    height: 100px;
+}
+
+.info-menu h2
+{
+    margin: 5px 0;
+}
 
 /* #endregion */

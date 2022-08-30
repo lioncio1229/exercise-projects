@@ -4,10 +4,9 @@ import {
   faArrowLeft,
   faArrowRight,
   faUpRightAndDownLeftFromCenter,
-  faDownLeftAndUpRightToCenter,
-  faCircleInfo,
+  faDownLeftAndUpRightToCenter
 } from "@fortawesome/free-solid-svg-icons";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+
 // import Picker from 'emoji-picker-react';
 
 import { useEffect, useRef } from "react";
@@ -15,6 +14,7 @@ import useCurrentNote from "../notes/hooks/useCurrentNote";
 import useTitleHandler from "./hooks/useTitleHandler";
 import useContentEditor from "./hooks/useContentEditor";
 import ContentReader from "./contentReader";
+import NoteInfo from "./noteInfo";
 
 export default function TextEditor() {
 
@@ -122,7 +122,7 @@ export default function TextEditor() {
       <div className="foot-con">
 
         <div className="text-editor-buttons">
-          <FontAwesomeIcon className="icon selectable" icon={faCircleInfo} />
+          <NoteInfo dateCreated={note.dateCreated} lastModified={note.lastModified}/>
           {!
             isDirty && 
             <>
