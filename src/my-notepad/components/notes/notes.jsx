@@ -7,6 +7,7 @@ import ConfirmationBox from "../confirmation-box";
 import NotesSort from "./notesSort";
 import useContentEditor from "../text-editor/hooks/useContentEditor";
 import useDeleteNote from "./hooks/useDeleteNote";
+import useSortNote from "./hooks/useSortNote";
 
 import { faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +19,8 @@ export default function Notes() {
   const [saveCB, setSaveCB] = useState({ id: undefined, isOn: false });
   const [deleteCB, setDeleteCB] = useState({ id: undefined, isOn: false });
   const deleteNote = useDeleteNote();
+
+  const listArray = useSortNote();
 
   const noteList = state.notes.list;
 
@@ -105,23 +108,39 @@ export default function Notes() {
       <div className="notes flex-con fcol">
         <div className="list">
           {
-            noteList && Object.keys(noteList).map((key) => {
+            // noteList && Object.keys(noteList).map((key) => {
 
-              const note = noteList[key];
+            //   const note = noteList[key];
+            //   const info =
+            //     (note.dateCreated === note.lastModified
+            //       ? "Date Created "
+            //       : "Last Modified ") + note.lastModified;
+
+            //   return <Note
+            //     key={key}
+            //     id={key}
+            //     info={note.dateCreated ? info : '--'}
+            //     title={note.title}
+            //     onNoteClick={handleNoteClick}
+            //     onNoteDelete={handleNoteDelete}
+            //   />
+            // })
+
+            listArray.map(note => {
               const info =
                 (note.dateCreated === note.lastModified
                   ? "Date Created "
                   : "Last Modified ") + note.lastModified;
 
               return <Note
-                key={key}
-                id={key}
-                info={note.dateCreated ? info : '--'}
-                title={note.title}
-                onNoteClick={handleNoteClick}
-                onNoteDelete={handleNoteDelete}
-              />
-            })
+                  key={note._id}
+                  id={note._id}
+                  info={note.dateCreated ? info : '--'}
+                  title={note.title}
+                  onNoteClick={handleNoteClick}
+                  onNoteDelete={handleNoteDelete}
+                />
+              })
           }
         </div>
 

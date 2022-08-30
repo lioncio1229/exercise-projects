@@ -9,27 +9,37 @@ import { sortTypes } from "./notesSlice";
 export default function NotesSort()
 {
     const {state, dispatch} = useStore();
+    const {sortType, isAscending} = state.notes;
     const toggleMenu = useToggleMenu();
-    const currentSelected = state.notes.sortType;
-
-    const setSelected = (value) => {
-        dispatch({type : 'notes/sort', payload : {sortType : value, isAscending : true}});
-    }
 
     const options = () => {
         return (
             <div ref={toggleMenu.menuRef} className="sort-option">
                 {
                     Object.keys(sortTypes).map(key => {
-                        const sortType = sortTypes[key];
+                        const item = sortTypes[key];
                         return <Radio
-                            value={sortType}
-                            selected={currentSelected}
-                            text={sortType.name}
-                            onChange={setSelected}
+                            key={key}
+                            value={item}
+                            selected={sortType}
+                            text={item.name}
+                            onChange={(value) => dispatch({type : 'notes/sort', payload : {sortType : value}})}
                         />
                     })
                 }
+                <div className="vertical-divider"></div>
+                <Radio
+                    value={true}
+                    selected={isAscending}
+                    text={'Ascending'}
+                    onChange={(value) => dispatch({type : 'notes/sort', payload : {isAscending : value}})}
+                />
+                <Radio
+                    value={false}
+                    selected={isAscending}
+                    text={'Descending'}
+                    onChange={(value) => dispatch({type : 'notes/sort', payload : {isAscending : value}})}
+                />
             </div>
         )
     }

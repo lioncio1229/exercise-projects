@@ -332,7 +332,7 @@ button:hover
 
 .notes
 {
-    height: 99.5%;
+    height: 91.2vh;
     min-width: 350px;
     max-width: 350px;
     background-color: var(--pallete1);
@@ -691,7 +691,7 @@ button:hover
 .sort-option
 {
     position: absolute;
-    top: -200px;
+    top: -240px;
     left: 50%;
     transform: translateX(-50%);
 
