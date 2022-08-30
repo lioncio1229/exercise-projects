@@ -4,7 +4,7 @@ import { notes_url } from "../../../utils";
 
 export default function useCreateNote()
 {
-    const {dispatch} = useStore();
+    const {dispatch, state} = useStore();
     const newNote = {
         title : 'New Note',
         content : '',

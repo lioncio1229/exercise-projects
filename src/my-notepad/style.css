@@ -194,6 +194,51 @@ button:hover
 }
 /* #endregion */
 
+/* #region Radio Button */
+.modern-radio-container {
+    margin: 12px 0;
+    padding: 0 10px;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+  }
+  
+  .radio-outer-circle {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+    border: 2px solid var(--pallete4);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    transition: all 0.1s linear;
+  }
+  
+  .radio-inner-circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--pallete4);
+    transition: all 0.1s linear;
+  }
+  .unselected {
+    border: 2px solid #666;
+  }
+  .unselected-circle {
+    width: 0;
+    height: 0;
+  }
+  .helper-text {
+    color: #666;
+    padding-right: 8px;
+    font-size: 14px;
+  }
+/* #endregion */
+
 /* #region Header */
 .header
 {
@@ -632,10 +677,36 @@ button:hover
 /* #endregion */
 
 /* #region Sort */
+.sort
+{
+    position: relative;
+}
+
 .sort-button
 {
     color: var(--pallete4);
     font-size: 30px;
 }
+
+.sort-option
+{
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 170px;
+    background-color: var(--pallete2);
+    border: 1px solid var(--pallete4);
+    box-shadow: 0 0 15px 2px var(--pallete5);
+
+    z-index: 12;
+}
+
+/* #endregion */
+
+/* #region Info */
+
+
 
 /* #endregion */

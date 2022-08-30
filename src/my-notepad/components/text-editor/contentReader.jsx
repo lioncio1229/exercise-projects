@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useCurrentNote from "../notes/hooks/useCurrentNote";
 import { useSpeechSynthesis } from "react-speech-kit";
 
@@ -8,18 +7,16 @@ import {
   faVolumeMute,
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
-import { useRef } from "react";
 import { useEffect } from "react";
+import useToggleMenu from "./useToggleMenu";
 
 export default function ContentReader() {
 
-  const optionRef = useRef(null);
-  const optionButtonRef = useRef(null);
+  const toggleMenu = useToggleMenu();
 
   const { note, state, dispatch } = useCurrentNote();
   const {isReading} = state.textEditor;
   const {pitch, speed, voiceIndex} = state.textEditor.readerSettings;
-  const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   const startReading = () => {
     dispatch({type : 'textEditor/reading', payload : true});
@@ -32,10 +29,6 @@ export default function ContentReader() {
   const { speak, cancel, speaking, voices } = useSpeechSynthesis({
     onEnd: () => stopReading(),
   });
-
-  // const [pitch, setPitch] = useState(1);
-  // const [speed, setSpeed] = useState(1);
-  // const [voiceIndex, setVoiceIndex] = useState(null);
 
   const voice = voices[voiceIndex] || null;
 
@@ -53,29 +46,16 @@ export default function ContentReader() {
     if(!isReading) cancel();
   }, [isReading]);
 
-  useEffect(() => {
-    document.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (
-        !optionRef.current?.contains(e.target) &&
-        !optionButtonRef.current?.contains(e.target) &&
-        isOptionOpen
-      )
-        setIsOptionOpen(false);
-    });
-  }, [isOptionOpen]);
-
-  const option = () => {
+  const options = () => {
 
     return (
-      <div ref={optionRef} className="content-reader-options flex-con-2 fcol">
+      <div ref={toggleMenu.menuRef} className="content-reader-options flex-con-2 fcol">
         <p>Voice</p>
 
         <select
           value={voiceIndex || ""}
           onChange={(event) => {
             dispatch({type : 'textEditor/readerSettings/update', payload : {voiceIndex : event.target.value}})
-            // setVoiceIndex(event.target.value);
           }}
         >
           <option value="">Default</option>
@@ -96,7 +76,6 @@ export default function ContentReader() {
           value={speed}
           onChange={(event) => {
             dispatch({type : 'textEditor/readerSettings/update', payload : {speed : Number(event.target.value)}})
-            // setSpeed(event.target.value);
           }}
         />
 
@@ -110,7 +89,6 @@ export default function ContentReader() {
           value={pitch}
           onChange={(event) => {
             dispatch({type : 'textEditor/readerSettings/update', payload : {pitch : event.target.value}})
-            // setPitch(event.target.value);
           }}
         />
 
@@ -124,11 +102,11 @@ export default function ContentReader() {
   return (
     <>
       <div className="content-reader flex-con">
-        {isOptionOpen && option()}
+        {toggleMenu.isMenuOpen && options()}
 
         <FontAwesomeIcon
-          ref={optionButtonRef}
-          onClick={() => setIsOptionOpen(!isOptionOpen)}
+          ref={toggleMenu.buttonRef}
+          onClick={toggleMenu.toggle}
           className="caret-up-icon selectable"
           icon={faCaretUp}
         />

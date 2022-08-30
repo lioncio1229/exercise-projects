@@ -4,11 +4,11 @@ import useCreateNote from "./hooks/useCreateNote";
 import { useState } from "react";
 import useStore from "../../useStore";
 import ConfirmationBox from "../confirmation-box";
+import NotesSort from "./notesSort";
 import useContentEditor from "../text-editor/hooks/useContentEditor";
 import useDeleteNote from "./hooks/useDeleteNote";
 
-import { faTrash, faSave, faSort } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
 export default function Notes() {
   const createNote = useCreateNote();
@@ -19,7 +19,7 @@ export default function Notes() {
   const [deleteCB, setDeleteCB] = useState({ id: undefined, isOn: false });
   const deleteNote = useDeleteNote();
 
-  const notes = state.notes.list;
+  const noteList = state.notes.list;
 
   const isNoteDirty = (id) => {
     const {currentId} = state.notes;
@@ -105,9 +105,9 @@ export default function Notes() {
       <div className="notes flex-con fcol">
         <div className="list">
           {
-            notes && Object.keys(notes).map((key) => {
+            noteList && Object.keys(noteList).map((key) => {
 
-              const note = notes[key];
+              const note = noteList[key];
               const info =
                 (note.dateCreated === note.lastModified
                   ? "Date Created "
@@ -130,7 +130,8 @@ export default function Notes() {
             <button onClick={handleAddNote} className="btn-l selectable">
               Add Note
             </button>
-            <FontAwesomeIcon className="sort-button selectable" icon={faSort} />
+            <NotesSort />
+            {/* <FontAwesomeIcon className="sort-button selectable" icon={faSort} /> */}
           </div>
         </div>
       </div>
