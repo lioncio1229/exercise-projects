@@ -1,5 +1,5 @@
 import useStore from "../../useStore";
-import useToggleMenu from "../text-editor/useToggleMenu"
+import useToggleMenu from "../text-editor/hooks/useToggleMenu"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from '@fortawesome/free-solid-svg-icons';

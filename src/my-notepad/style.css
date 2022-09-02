@@ -195,15 +195,19 @@ button:hover
 /* #endregion */
 
 /* #region Radio Button */
-.modern-radio-container {
-    margin: 12px 0;
-    padding: 0 10px;
+    .modern-radio-container {
+    padding: 8px;
     display: flex;
     cursor: pointer;
     user-select: none;
     text-align: center;
   }
   
+  .modern-radio-container:hover
+  {
+    background-color: #f0eba7;
+  }
+
   .radio-outer-circle {
     width: 15px;
     height: 15px;
@@ -289,9 +293,15 @@ button:hover
 {
     background-color: var(--pallete5);
 }
+
 .inactive
 {
     background-color: var(--pallete4);
+}
+
+.inactive:hover
+{
+    background-color: #a39c38;
 }
 
 .list-item div
@@ -316,14 +326,26 @@ button:hover
     font-size: 30px;
 }
 
+.list-item .delete-button
+{
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    visibility: hidden;
+}
+
+.delete-button .icon
+{
+    font-size: 30px;
+}
+
+.delete-button .icon:hover{
+    color: red;
+}
+
 .list-item .list-item-info
 {
     width: 80%;
-}
-
-.list-item .list-item-icon:hover
-{
-    color: red;
 }
 
 /* #endregion */
