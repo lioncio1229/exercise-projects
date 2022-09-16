@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import MyNotepad from './my-notepad';
-// import ResistorColorCoding from './resistor_color_coding';
+// import SimpleCalculator from './simple-calculator';
+// import ResistorColorCoding from './resistor-color-coding';
 
 ReactDOM.render(
   <React.StrictMode>
