@@ -1,6 +1,6 @@
 # This are some of my exercise projects
 
-Projects Insides
+Projects Inside
 
 * My Notepad
 * Resistor Color Coding
