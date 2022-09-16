@@ -7,10 +7,10 @@ export default function useViewportAnimation(initialState='default')
 
     const getAnimationClass = () => {
         switch (view) {
-            case 'toMain':
-                return  'to-main-animation';
-            case 'toImg':
-                return 'to-img-animation';
+            case 'rcc-toMain':
+                return  'rcc-to-main-animation';
+            case 'rcc-toImg':
+                return 'rcc-to-img-animation';
             case 'default':
                 return '';
         }

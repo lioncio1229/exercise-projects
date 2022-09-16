@@ -25,16 +25,16 @@ export default function Resistor() {
   const closeColorSelect = () => setCurrentBand('');
 
   return (
-    <div className="resistor flex-container">
-      <div className="resistor-wire">
-        <div className="resistor-body">
+    <div className="rcc-resistor rcc-flex-container">
+      <div className="rcc-resistor-wire">
+        <div className="rcc-resistor-body">
           {state.map((band) => (
             <div
               key={band.id}
               onClick={() => openColorSelect(band.bandName)}
-              className={"band selection " + band.color}
+              className={"rcc-band rcc-selection " + band.color}
             >
-              <div className="band-info">
+              <div className="rcc-band-info">
                 <h2>{band.text}</h2>
                 <h2>{displayValue(band)}</h2>
               </div>

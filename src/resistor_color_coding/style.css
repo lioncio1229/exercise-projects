@@ -11,15 +11,23 @@ body
     font-family: 'poppins';
 }
 
+/* .rcc-container
+{
+    width : 100%;
+    height : 100vh;
+    font-family: 'poppins','Courier New', Courier, monospace;
+    background-color: #FBF9F9;
+} */
+
 /* #region Viewport */
-.viewport
+.rcc-viewport
 {
     width: 90%;
     height: 500px;
     overflow: hidden;
 }
 
-.viewport .content
+.rcc-viewport .rcc-content
 {
     width: 200%;
     height: inherit;
@@ -30,34 +38,34 @@ body
     animation-fill-mode: forwards;
 }
 
-.viewport .to-main-animation
+.rcc-viewport .rcc-to-main-animation
 {
-    animation-name: toMain;
+    animation-name: rcc-toMain;
 }
 
-.viewport .to-img-animation
+.rcc-viewport .rcc-to-img-animation
 {
-    animation-name: toImg;
+    animation-name: rcc-toImg;
 }
 
-@keyframes toMain
+@keyframes rcc-toMain
 {
     from{transform: translateX(-63%);}
     to{transform: translateX(0.5%);}
 }
 
-@keyframes toImg
+@keyframes rcc-toImg
 {
     from{transform: translateX(0.5%);}
     to{transform: translateX(-63%);}
 }
 
-.viewport .main
+.rcc-viewport .rcc-main
 {
     margin-top: 70px;
 }
 
-.viewport img
+.rcc-viewport img
 {
     margin-top: 20px;
     width: 600px;
@@ -66,14 +74,14 @@ body
 /* #endregion */
 
 /* #region Utilities */
-.flex-container
+.rcc-flex-container
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.flex-container-column
+.rcc-flex-container-column
 {
     display: flex;
     justify-content: space-between;
@@ -81,7 +89,7 @@ body
     flex-direction: column;
 }
 
-.selection
+.rcc-selection
 {
     cursor: pointer;
     user-select: none;
@@ -90,7 +98,7 @@ body
 
 /* #region Navigation Bar */
 
-    .navbar
+    .rcc-navbar
     {
         padding: 0 20px;
         background-color: white;
@@ -98,24 +106,24 @@ body
         height: 60px;
     }
 
-    .navbar h1
+    .rcc-navbar h1
     {
         font-size: 25px;
         color: var(--primary-color);
     }
 
-    .nav-menu
+    .rcc-nav-menu
     {
         height: 100%;
         width: 480px;
     }
 
-    .nav-buttons
+    .rcc-nav-buttons
     {
         height: 100%;
     }
 
-    .nav-buttons div
+    .rcc-nav-buttons div
     {
         width: 100px;
         height: 100%;
@@ -125,7 +133,7 @@ body
 
 /* #region Button */
 
-.btn
+.rcc-btn
 {
     cursor: pointer;
     user-select: none;
@@ -134,37 +142,37 @@ body
     align-items: center;
 }
 
-.btn-r-s
+.rcc-btn-r-s
 {
     border-radius: 10px;
 }
 
-.btn-m
+.rcc-btn-m
 {
     width: 160px;
     height: 38px;
 }
 
-.primary
+.rcc-primary
 {
     background-color: var(--primary-color);
     color: white;
     transition: background-color 0.2s;
 }
 
-.light
+.rcc-light
 {
     background-color: white;
     color: var(--primary-color);
     transition: background-color 0.2s;
 }
 
-.primary-hover:hover
+.rcc-primary-hover:hover
 {
     background-color: #016dac;
 }
 
-.light-hover:hover
+.rcc-light-hover:hover
 {
     background-color: rgb(243, 237, 237);
 }
@@ -173,13 +181,13 @@ body
 
 /* #region Resistor */
 
-.resistor
+.rcc-resistor
 {
     width: 100%;
     height: 220px;
 }
 
-.resistor-wire
+.rcc-resistor-wire
 {
     width: 1200px;
     height: 12px;
@@ -189,7 +197,7 @@ body
     position: relative;
 }
 
-.resistor-body
+.rcc-resistor-body
 {
     width: 800px;
     height: 170px;
@@ -204,7 +212,7 @@ body
     justify-content: space-evenly;
 }
 
-.band
+.rcc-band
 {
     background-color: black;
     height: inherit;
@@ -212,7 +220,7 @@ body
     position: relative;
 }
 
-.band-info
+.rcc-band-info
 {
     width: 100px;
     height: auto;
@@ -223,7 +231,7 @@ body
     left: -50%;
 }
 
-.band-info h2
+.rcc-band-info h2
 {
     font-weight: bold;
     font-size: 20px;
@@ -251,13 +259,13 @@ body
 /* #endregion */
 
 /* #region Output */
-.output
+.rcc-output
 {
     width: 400px;
     margin-bottom: 2px;
 }
 
-.output div
+.rcc-output div
 {
     height: 35px;
     line-height: 35px;
@@ -269,7 +277,7 @@ body
 /* #endregion */
 
 /* #region ColorSelect */
-.color-select
+.rcc-color-select
 {
     width: 150px;
     position: absolute;
@@ -278,7 +286,7 @@ body
     z-index: 14;
 }
 
-.color-item
+.rcc-color-item
 {
     width: 100%;
     padding: 1.2px;
@@ -287,7 +295,7 @@ body
     position: relative;
 }
 
-.caret-right
+.rcc-caret-right
 {
     position: absolute;
     left: 10px;
@@ -299,7 +307,7 @@ body
 /* #endregion */
 
 /* #region Footer */
-.footer
+.rcc-footer
 {
     height: 40px;
     width: 100%;
@@ -312,7 +320,7 @@ body
     bottom: 0;
 }
 
-.footer b
+.rcc-footer b
 {
     margin-right: 7px;
 }
